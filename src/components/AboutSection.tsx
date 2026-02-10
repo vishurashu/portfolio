@@ -45,7 +45,7 @@ const AboutSection = () => (
       >
         <p className="mb-2 font-mono text-xs text-muted-foreground">// section::about</p>
         <h3 className="mb-12 text-3xl font-bold sm:text-4xl lg:text-5xl">
-          <span className="text-primary">&gt;</span> whoami<span className="cursor-blink"></span>
+          <span className="text-primary">&gt;</span> who am i<span className="cursor-blink"></span>
         </h3>
       </motion.div>
 
