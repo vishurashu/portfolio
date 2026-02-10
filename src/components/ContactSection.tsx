@@ -27,7 +27,7 @@ const ContactSection = () => (
           </MagnetizeButton>
           <MagnetizeButton asChild>
             <a href="tel:09915129809" className="gap-2 font-mono text-xs">
-              <Phone size={14} /> 09915129809
+              <Phone size={14} /> +91 9915129809
             </a>
           </MagnetizeButton>
         </div>
