@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 5% 3%;
+    --foreground: 120 60% 75%;
+
+    --card: 120 5% 5%;
+    --card-foreground: 120 60% 75%;
+
+    --popover: 120 5% 5%;
+    --popover-foreground: 120 60% 75%;
+
+    --primary: 120 100% 40%;
+    --primary-foreground: 120 5% 3%;
+
+    --secondary: 120 8% 10%;
+    --secondary-foreground: 120 60% 75%;
+
+    --muted: 120 5% 12%;
+    --muted-foreground: 120 20% 40%;
+
+    --accent: 180 100% 45%;
+    --accent-foreground: 120 5% 3%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 20% 12%;
+    --input: 120 20% 12%;
+    --ring: 120 100% 40%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 120 5% 5%;
+    --sidebar-foreground: 120 60% 75%;
+    --sidebar-primary: 120 100% 40%;
+    --sidebar-primary-foreground: 120 5% 3%;
+    --sidebar-accent: 120 5% 12%;
+    --sidebar-accent-foreground: 120 60% 75%;
+    --sidebar-border: 120 20% 12%;
+    --sidebar-ring: 120 100% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Scanline overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 0, 0.015) 2px,
+      rgba(0, 255, 0, 0.015) 4px
+    );
+  }
+}
+
+/* Gradient Button Properties */
+@layer base {
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+  }
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+  }
+  @property --color-1 {
+    syntax: '<color>';
+    initial-value: #020a02;
+    inherits: false;
+  }
+  @property --color-2 {
+    syntax: '<color>';
+    initial-value: #041a04;
+    inherits: false;
+  }
+  @property --color-3 {
+    syntax: '<color>';
+    initial-value: #0a3d0a;
+    inherits: false;
+  }
+  @property --color-4 {
+    syntax: '<color>';
+    initial-value: #00cc00;
+    inherits: false;
+  }
+  @property --color-5 {
+    syntax: '<color>';
+    initial-value: #00ff41;
+    inherits: false;
+  }
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+  }
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(120, 100%, 40%, 0.2);
+    inherits: true;
+  }
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(120, 100%, 30%, 0.75);
+    inherits: true;
+  }
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+  }
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+  }
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+  }
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+  }
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+  }
+}
+
+@layer components {
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(
+      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+      var(--color-1) var(--stop-1),
+      var(--color-2) var(--stop-2),
+      var(--color-3) var(--stop-3),
+      var(--color-4) var(--stop-4),
+      var(--color-5) var(--stop-5)
+    );
+    transition:
+      --pos-x 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --pos-y 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --spread-x 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --spread-y 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --color-1 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --color-2 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --color-3 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --color-4 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --color-5 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --border-angle 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      --border-color-1 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --border-color-2 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      --stop-1 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --stop-2 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --stop-3 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --stop-4 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      --stop-5 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle),
+      var(--border-color-1),
+      var(--border-color-2)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 91.51%;
+    --spread-x: 120.24%;
+    --spread-y: 103.18%;
+    --color-1: #00cc00;
+    --color-2: #00ff41;
+    --color-3: #00e5ff;
+    --color-4: #041a04;
+    --color-5: #020a02;
+    --border-angle: 190deg;
+    --border-color-1: hsla(120, 100%, 60%, 0.1);
+    --border-color-2: hsla(180, 100%, 50%, 0.6);
+    --stop-1: 0%;
+    --stop-2: 8.8%;
+    --stop-3: 21.44%;
+    --stop-4: 71.34%;
+    --stop-5: 85.76%;
+  }
+
+  .gradient-button-variant {
+    --color-1: #020a0a;
+    --color-2: #0a3d3d;
+    --color-3: #00e5ff;
+    --color-4: #00ff41;
+    --border-angle: 200deg;
+    --border-color-1: hsla(180, 100%, 50%, 0.6);
+    --border-color-2: hsla(120, 100%, 40%, 0.15);
+  }
+
+  .gradient-button-variant:hover {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --color-1: #020a0a;
+    --color-2: #00ff41;
+    --color-3: #00e5ff;
+    --color-4: #0a3d3d;
+    --color-5: #020a0a;
+    --stop-1: 0%;
+    --stop-2: 10%;
+    --stop-3: 35.44%;
+    --stop-4: 71.34%;
+    --stop-5: 90.76%;
+    --border-angle: 210deg;
+    --border-color-1: hsla(180, 100%, 50%, 0.2);
+    --border-color-2: hsla(120, 100%, 40%, 0.75);
+  }
+}
+
+/* Glitch text animation */
+@keyframes glitch {
+  0%, 100% { text-shadow: 2px 0 hsl(120 100% 40%), -2px 0 hsl(180 100% 45%); }
+  25% { text-shadow: -2px -1px hsl(120 100% 40%), 2px 1px hsl(180 100% 45%); }
+  50% { text-shadow: 1px 2px hsl(120 100% 40%), -1px -2px hsl(180 100% 45%); }
+  75% { text-shadow: -1px 1px hsl(120 100% 40%), 1px -1px hsl(180 100% 45%); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.glitch-text {
+  animation: glitch 3s ease-in-out infinite;
+}
+
+.cursor-blink::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: hsl(120 100% 40%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(120 5% 3%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(120 100% 20%);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(120 100% 40%);
+}
+
+/* Selection */
+::selection {
+  background: hsl(120 100% 40% / 0.3);
+  color: hsl(120 100% 80%);
+}
