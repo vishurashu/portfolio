@@ -11,10 +11,10 @@ interface SkillCategory {
 
 const categories: SkillCategory[] = [
   { title: "Backend", skills: ["Node.js", "Express.js"], icon: Server, area: "md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]" },
-  { title: "Databases", skills: ["MongoDB", "PostgreSQL", "Redis"], icon: Database, area: "md:[grid-area:1/7/2/13] xl:[grid-area:1/5/2/9]" },
-  { title: "Auth & Security", skills: ["JWT", "RBAC"], icon: Shield, area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/9/2/13]" },
-  { title: "Real-Time & Payments", skills: ["Socket.IO", "Stripe"], icon: Radio, area: "md:[grid-area:2/7/3/13] xl:[grid-area:2/1/3/7]" },
-  { title: "Architecture", skills: ["REST APIs", "RAG", "Layered Design"], icon: Layout, area: "md:[grid-area:3/1/4/13] xl:[grid-area:2/7/3/13]" },
+  { title: "Databases", skills: ["MongoDB", "PostgreSQL", "Redis",], icon: Database, area: "md:[grid-area:1/7/2/13] xl:[grid-area:1/5/2/9]" },
+  { title: "Auth & Security", skills: ["JWT", "RBAC", "OAuth",], icon: Shield, area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/9/2/13]" },
+  { title: "Real-Time & Payments", skills: ["Socket.IO", "Stripe", "Razorpay", "WebSockets"], icon: Radio, area: "md:[grid-area:2/7/3/13] xl:[grid-area:2/1/3/7]" },
+  { title: "Architecture", skills: ["REST APIs", "RAG", "Layered Design", "Microservices"], icon: Layout, area: "md:[grid-area:3/1/4/13] xl:[grid-area:2/7/3/13]" },
 ];
 
 const SkillsSection = () => (
